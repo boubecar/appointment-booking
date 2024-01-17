@@ -1,0 +1,51 @@
+<div class="content">
+    <div class="container">
+        <div class="back-icon">
+            <a routerLink="/info-form">
+                <img src="assets/images/back-arrow.svg" alt="Retour" />
+                <h3 class="back-title">Retour</h3>
+            </a>
+        </div>
+
+        <div class="content-title">
+            <h1 class="main-title">Résumé</h1>
+            <h3 class="description-title">Veuillez vérifier vos informations avant de confirmer la réservation</h3>
+        </div>
+
+        <div class="selected-service">
+            <h3 class="title">Service Sélectionné</h3>
+            <h1 class="service">Bilan de santé pour animaux de compagnie - {{ appointmentName }}</h1>
+        </div>
+          
+        <div class="selected-date">
+            <h3 class="title">Date et Heure Sélectionnées</h3>
+            <h1 class="service">{{ selectedDate }} - {{ selectedTimeslot }}</h1>
+        </div>
+
+        <hr class="dashed" />
+
+        <h3 class="caption">DÉTAILS PERSONNELS</h3>
+
+        <h3 class="container-title">Nom</h3>
+        <h1 class="container-value">{{ name }}</h1>
+
+        <h3 class="container-title">Numéro de téléphone portable</h3>
+        <h1 class="container-value">{{ mobile }}</h1>
+
+        <h3 class="container-title">E-mail</h3>
+        <h1 class="container-value">{{ email }}</h1>
+
+        <hr class="dashed" *ngIf="remarks"/>
+
+        <h3 class="container-title" *ngIf="remarks">Remarques</h3>
+        <h1 class="container-value" *ngIf="remarks">{{ remarks }}</h1>
+
+        <div class="agree">
+            <h3 class="agreement">En réservant un rendez-vous, vous acceptez nos <span>Conditions générales</span></h3>
+        </div>
+
+        <div class="submit-button">
+            <button (click)="proceedToReceipt()" type="button" class="proceed-btn">Réserver un rendez-vous</button>
+        </div>
+    </div>
+</div>

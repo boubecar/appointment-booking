@@ -1,0 +1,58 @@
+<div class="content">
+  <div class="container">
+
+    <div class="back-icon">
+      <a routerLink="/services-type">
+        <img src="assets/images/back-arrow.svg" alt="Retour" />
+        <h3 class="back-title">Retour</h3>
+      </a>
+    </div>
+
+    <div class="content-title">
+      <h3 class="description-title">{{ appointmentDescription }}</h3>
+      <h1 class="main-title">{{ appointmentName }}</h1>
+    </div>
+
+    <div class="select-date">
+      <h3 class="title">SÉLECTIONNEZ LA DATE</h3>
+     </div>
+
+    <div class="carousel-container">
+      <button class="nav-button left" (click)="moveCarousel(-1)">
+        <img src="assets/images/arrow-left.svg" alt="gauche" />
+      </button>
+
+      <div class="carousel">
+        <div class="days-container">
+          <button class="date" [class.active]="date.isActive" (click)="selectDate(date)" *ngFor="let date of appointmentDates">
+            <h3>{{ date.month }}</h3>
+            <h1>{{ date.day }}</h1>
+            <h4>{{ date.dayName }}</h4>
+          </button>
+        </div>
+      </div>
+
+      <button class="nav-button right" (click)="moveCarousel(1)">
+        <img src="assets/images/arrow-right.svg" alt="droite" />
+      </button>
+    </div>
+
+    <div class="select-timeslot">
+      <h3 class="title">SÉLECTIONNEZ L'INTERVALLE HORAIRE</h3>
+    </div>
+
+    <div class="timeslot">
+      <div class="slots">
+        <button class="time" *ngFor="let timeslot of appointmentTimeslots" (click)="selectTimeslot(timeslot)" [ngClass]="{'active': selectedTimeslot === timeslot}">
+          <h3>{{ timeslot }}</h3>
+        </button>
+      </div>
+    </div>
+
+    <div class="submit-button">
+        <button (click)="proceedToInfoForm()" type="submit" class="proceed-btn" [disabled]="!selectedDate || !selectedTimeslot">
+          {{ !selectedDate || !selectedTimeslot ? 'Sélectionnez une date et une heure pour continuer' : 'Procéder' }}
+        </button>
+    </div>
+  </div>
+</div>
